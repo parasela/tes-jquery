@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>jQuery Ajax</title>
+<script type="text/javascript" src="jquery-1.2.3.pack.js"></script>
+<script type="text/javascript">
+$(function() {
+	$('#loading').ajaxStart(function(){
+		$(this).fadeIn();
+	}).ajaxStop(function(){
+		$(this).fadeOut();
+	});
+
+	$('#menu a').click(function() {
+		var url = $(this).attr('href');
+		$('#container').load(url);
+		return false;
+	});
+});
+</script>
+<style type="text/css">
+* { font-family: Verdana, sans-serif; }
+div { font-size: 11px; }
+#container { line-height: 20px; width: 500px; height: 500px; margin: 20px 0; padding: 10px; border: 1px solid #999; }
+ul { padding: 0 }
+li { display: inline; margin: 0 3px; }
+#loading { position: absolute; top: 0; left: 0; color: white; background-color: red; padding: 5px 10px; font: 12px Arial; }
+</style>
+</head>
+<body>
+<div id="loading" style="display:none">Loading...</div>
+<h4>jQuery Ajax</h4>
+<div>
+	<div id="menu">
+		<ul>
+			<li><a href="content.php?id=1">Menu 1</a></li>
+			<li><a href="content.php?id=2">Menu 2</a></li>
+			<li><a href="content.php?id=3">Menu 3</a></li>
+			<li><a href="content.php?id=4">Menu 4</a></li>
+		</ul>
+	</div>
+	
+	<div id="container">
+		Isi dari file content.php akan ditampilkan di sini
+	</div>
+</div>
+</body>
+</html>
